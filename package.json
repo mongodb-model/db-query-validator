@@ -33,7 +33,6 @@
   "homepage": "https://github.com/mongodb-model/db-query-validator#readme",
   "dependencies": {
     "dotenv": "16.0.3",
-    "mongodb": "4.11.0",
-    "vitest": "0.25.1"
+    "mongodb": "4.11.0"
   }
 }

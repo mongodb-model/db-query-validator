@@ -66,7 +66,7 @@ class CallbackQueryValidator extends require("./base") {
     }
     this.connect = (fn = () => {}) =>
       MongoClient.connect(
-        this.url,
+        this.uri,
         { useUnifiedTopology: true },
         fn
       );
@@ -231,7 +231,7 @@ class CallbackQueryValidator extends require("./base") {
    * @return {EventEmitter|Stream|Transform}  A transform that emits an error event
    *
    */
-  validateDbName(dbName = this.dbName, event = "collectionDrop-error") {
+  validateDbName(dbName = this.db, event = "collectionDrop-error") {
     if (dbName && typeof dbName !== "string")
       return this.emit(event, { error: "input database name must a string" });
     return this.emit("validatedDbName");
@@ -542,7 +542,7 @@ class CallbackQueryValidator extends require("./base") {
    */
   validateCollectionNameDbName(
     collectionName = this.collectionName,
-    dbName = this.dbName,
+    dbName = this.db,
     event = "collectionDrop-error"
   ) {
     // this.validateCollectionName(collectionName, event);
